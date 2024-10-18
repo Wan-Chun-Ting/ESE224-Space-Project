@@ -1,5 +1,6 @@
 
 
+#include <array>
 #include <string>
 
 using namespace std;
@@ -7,10 +8,12 @@ class Probe{
     private:
         string name;
         int ID;
-        int dimention[2];
+        array<int, 2> dimensions;
         double area;
-        int position[2];
+        array<int, 2> positions;
     public:
+        Probe(string n = "", int id = -1, array<int, 2> dim = {-1, -1}, double ar = -1, array<int, 2> pos = {-1, -1});
+
         void calculateArea();
         void displayProbe();
 };
