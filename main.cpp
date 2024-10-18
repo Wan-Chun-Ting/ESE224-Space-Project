@@ -4,8 +4,9 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <vector>
 
-#include "Probe.h"
+#include "Galaxy.h"
 
 using namespace std;
 
@@ -16,10 +17,16 @@ int main(){
     string input_user, input_password;
     bool credential = false;
     int id;
-    array<int, 2> dim, pos; 
+    array<int, 2> dim, pos;
+    Galaxy galaxy;
 
     // read from Probes.txt
-    
+    for(int i = 0 ; i < 10 ; i++){
+        ProbesInput >> user >> id >> dim[0] >> dim[1] >> pos[0] >> pos[1];
+        cout << user << id << dim[0] << dim[1] << pos[0] << pos[1] << endl;
+        Probe a(user, id, dim, -1, pos);
+        galaxy.add_Probe(a);
+    }
 
 
     InputFile >>  user >> password;
@@ -47,8 +54,24 @@ int main(){
 
     // main menu
     while(contin){
+        
+        cout << endl << "1. Sort Probes by Name" << endl;
+        cout << "2. Sort Probes by ID" << endl;
+        cout << "3. Sort Probes by Area" << endl;
+        cout << "4. Randomize Probe Order" << endl;
+        cout << "5. Print All Probe Names" << endl;
+        cout << "6. Search Probe by Name" << endl;
+        cout << "7. Search Probe by ID" << endl;
+        cout << "8. Write Galaxy to File" << endl;
+        cout << "9. Swap Probe Data" << endl;
+        cout << "10. Insert Probe Data" << endl;
+        cout << "11. Copy Probe" << endl;
+        cout << "12. Display Probe" << endl;
+        cout << "13. Quit" << endl;
+
         cout << "Enter your choice (1-13): ";
         cin >> choice;
+
         if(choice == 1){
             cout << "Probes sorted by name." << endl;
 

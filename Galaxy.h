@@ -7,6 +7,9 @@ class Galaxy{
         vector<Probe> probs;
     public:
         Galaxy();
+        void add_Probe(Probe pro);
+        Probe retrieve(int index);
+
         void sortByName();
         void sortByID();
         void sortByarea();
