@@ -1,0 +1,8 @@
+
+
+class Galaxy{
+    private:
+    
+    public:
+        
+};
