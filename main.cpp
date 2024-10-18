@@ -1,5 +1,6 @@
 
 
+#include <array>
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -10,9 +11,16 @@ using namespace std;
 
 int main(){
     ifstream InputFile("users.txt");
+    ifstream ProbesInput("Probes.txt");
     string user, password;
     string input_user, input_password;
     bool credential = false;
+    int id;
+    array<int, 2> dim, pos; 
+
+    // read from Probes.txt
+    
+
 
     InputFile >>  user >> password;
     cout << user << password;

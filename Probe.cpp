@@ -6,9 +6,8 @@
 
 using namespace std;
 
-Probe::Probe(std::string n, int id, std::array<int, 2> dim, double ar, array<int, 2> pos)
-    : name(n), ID(id), dimensions(dim), area(ar), positions(pos){
-
+Probe::Probe(std::string n, int id, std::array<int, 2> dim, double ar, array<int, 2> pos) : name(n), ID(id), dimensions(dim), area(ar), positions(pos){
+    calculateArea();
 }
 
 void Probe::operator<<(Probe& other){

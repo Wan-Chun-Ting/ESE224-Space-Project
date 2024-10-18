@@ -6,6 +6,7 @@ class Galaxy{
     private:
         vector<Probe> probs;
     public:
+        Galaxy();
         void sortByName();
         void sortByID();
         void sortByarea();
