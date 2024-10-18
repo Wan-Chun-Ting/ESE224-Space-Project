@@ -18,5 +18,9 @@ Probe Galaxy::retrieve(int index){
 
 
 void Galaxy::sortByName(){
-    cout << "Current order of probes" << endl;
+    cout << "Current order of probes: " << endl;
+}
+
+void Galaxy::displayProbe(int index){
+    probs[index].displayProbe();
 }

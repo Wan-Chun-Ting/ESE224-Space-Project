@@ -55,7 +55,9 @@ void Probe::calculateArea(){
 }
 
 void Probe::displayProbe(){
-    cout << name << " with id: " << ID << endl;
-    cout << "with width: " << dimensions[0] << " and length: " << dimensions[1] << endl;
-    cout << "Located at x: " << positions[0] << "and y: " << positions[1] << endl;
+    cout << "Name: " << name << endl;
+    cout << "ID: " << ID << endl;
+    cout << "Dimensions: [" << dimensions[0] << ", " << dimensions[1] << "]" << endl;
+    cout << "Area: " << area << endl;
+    cout << "Positions: [" << positions[0] << ", " << positions[1] << "]" << endl;
 }

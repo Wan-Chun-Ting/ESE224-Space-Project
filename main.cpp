@@ -50,7 +50,7 @@ int main(){
     }
 
     bool contin = true;
-    int choice;
+    int choice, index, source, destin;
 
     // main menu
     while(contin){
@@ -87,6 +87,19 @@ int main(){
         }
         else if(choice == 7){
             cout << "Enter the ID of the probe to search: " << endl;
+        }
+        else if(choice == 11){
+            cout << "Enter the index of the source probe: " << endl;
+            cin >> source;
+            cout << "Enter the index of the destination probe: " << endl;
+            cin >> destin;
+            
+        }
+        else if(choice == 12){
+            cout << "Enter the index of the probe to display: " << endl;
+            cin >> index;
+            cout << endl << "Probe Details:" << endl;
+            galaxy.displayProbe(index);
         }
         else if(choice == 13){
             cout << "Thank you for using Galactic Explorer System. Goodbye!" << endl;
