@@ -12,7 +12,7 @@ class Galaxy{
 
         void sortByName();
         void sortByID();
-        void sortByarea();
+        void sortByarea(double area);
         Probe searchProbeByName(const string& name);
         Probe searchProbeByID(int id);
         void swapProbeData(int idx1, int idx2);
