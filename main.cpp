@@ -22,10 +22,14 @@ int main(){
 
     // read from Probes.txt
     for(int i = 0 ; i < 10 ; i++){
-        ProbesInput >> user >> id >> dim[0] >> dim[1] >> pos[0] >> pos[1];
-        cout << user << id << dim[0] << dim[1] << pos[0] << pos[1] << endl;
-        Probe a(user, id, dim, -1, pos);
-        galaxy.add_Probe(a);
+        // ProbesInput >> user >> id >> dim[0] >> dim[1] >> pos[0] >> pos[1];
+        // cout << user << id << dim[0] << dim[1] << pos[0] << pos[1] << endl;
+        ProbesInput >> user;
+        ProbesInput >> id;
+        cout << user << id;
+        Probe p;
+        
+        // galaxy.add_Probe(a);
     }
 
 

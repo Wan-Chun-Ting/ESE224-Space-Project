@@ -6,9 +6,62 @@
 
 using namespace std;
 
-Probe::Probe(std::string n, int id, std::array<int, 2> dim, double ar, array<int, 2> pos) : name(n), ID(id), dimensions(dim), area(ar), positions(pos){
-    calculateArea();
+Probe::Probe(){}
+
+string Probe::getName() const {
+    return name;
 }
+
+int Probe::getID() const {
+    return ID;
+}
+
+int Probe::getDimension(int index) const {
+    if (index == 0 || index == 1) {
+        return dimensions[index];
+    }
+    return -1;
+}
+
+double Probe::getArea() const {
+    return area;
+}
+
+int Probe::getPosition(int index) const {
+    if (index == 0 || index == 1) {
+        return positions[index];
+    }
+    return -1;
+}
+
+void Probe::setName(const string& newName) {
+    name = newName;
+}
+
+void Probe::setID(int newID) {
+    ID = newID;
+}
+
+void Probe::setDimension(int index, int value) {
+    if (index == 0 || index == 1) {
+        dimensions[index] = value;
+        calculateArea();
+    } else {
+        throw out_of_range("Invalid index for dimension");
+    }
+}
+
+// Mutator for setting a specific position (x or y coordinate)
+void Probe::setPosition(int index, int value) {
+    if (index == 0 || index == 1) {
+        positions[index] = value;
+    } else {
+        throw out_of_range("Invalid index for position");
+    }
+}
+
+
+
 
 void Probe::operator<<(Probe& other){
     name = other.name;
@@ -54,7 +107,7 @@ void Probe::calculateArea(){
     area = 2 * (dimensions[0] * dimensions[1]);
 }
 
-void Probe::displayProbe(){
+void Probe::displayProbe() const{
     cout << "Name: " << name << endl;
     cout << "ID: " << ID << endl;
     cout << "Dimensions: [" << dimensions[0] << ", " << dimensions[1] << "]" << endl;
