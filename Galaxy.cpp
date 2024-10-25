@@ -100,6 +100,21 @@ int binarySearchByID(const vector<Probe>& probs, int id)
     return -1;  // Probe not found
 }
 
+Probe Galaxy::searchProbeByID(int id)
+{
+    sortByID();  // Sort by ID before performing binary search
+    int index = binarySearchByID(probs, id);
+
+    if (index != -1)
+    {
+        return probs[index];
+    }
+    else
+    {
+        std::cerr << "Probe not found by ID: " << id << std::endl;
+        return Probe();  // Return an empty Probe
+    }
+}
 void Galaxy::swapProbeData(int idx1, int idx2)
 {
     if (idx1 >= 0 && idx1 < probs.size() && idx2 >= 0 && idx2 < probs.size())
