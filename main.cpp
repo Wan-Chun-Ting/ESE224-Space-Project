@@ -58,7 +58,7 @@ int main(){
             p.setDimension(1, dim[1]);
             p.setPosition(0, pos[0]);
             p.setPosition(1, pos[1]);
-
+            p.calculateArea();
             galaxy.add_Probe(p);
         }
     }
@@ -118,8 +118,14 @@ int main(){
         case 4:
             cout << "Probes randomized" << endl;
             galaxy.randomizeOrder();
+
+            cout << "Current order of probes: " << endl;
+            for (int i = 0; i < 10; i++ ) {
+                cout << i + 1 << ". " << galaxy.retrieve(i).getName() << endl;
+            }
             break;
         case 5:
+            cout << endl << "All Probe Names: " << endl;
             galaxy.printAllNames();
             break;
         case 6:
@@ -137,12 +143,22 @@ int main(){
             cin >> index;
             galaxy.searchProbeByID(index);
             break;
+        case 8:
+            galaxy.writeGalaxyToFile();
+            break;
         case 9:
             cout << "Enter the index of the first probe: ";
             cin >> source;
             cout << "Enter the index of the second probe: ";
             cin >> destin;
+
             galaxy.swapProbeData(source, destin);
+
+            cout << "Probe at index " << source << ":" << endl;
+
+            galaxy.retrieve(source).displayProbe();
+            cout << endl << "Probe at index " << destin << ":" << endl;
+            galaxy.retrieve(destin).displayProbe();
             break;
         case 10:
             cout << "Enter the index of the probe to modify: ";

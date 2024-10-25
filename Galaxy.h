@@ -24,4 +24,6 @@ class Galaxy{
         void randomizeOrder();
         void printAllNames();
         void writeGalaxyToFile();
+
+
 };

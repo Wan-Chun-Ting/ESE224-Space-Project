@@ -1,8 +1,11 @@
 
 #include "Galaxy.h"
+#include <cstdio>
+#include <fstream>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <ostream>
 
 
 
@@ -150,10 +153,6 @@ void Galaxy::swapProbeData(int idx1, int idx2)
     {
         // Use the overloaded '-' operator to swap dimensions, positions, and areas
         probs[idx1] - probs[idx2];
-        cout << "Probe at index " << idx1 << ":" << endl;
-        probs[idx1].displayProbe();
-        cout << endl << "Probe at index " << idx2 << ":" << endl;
-        probs[idx2].displayProbe();
     }
     else
     {
@@ -177,6 +176,7 @@ void Galaxy::insertProbeData(int probs_index, int dim_pos, int options, int valu
     }
     else{
         probs[probs_index].setPosition(options, value);
+    }
 }
 
 void Galaxy::printAllNames(){
@@ -186,17 +186,31 @@ void Galaxy::printAllNames(){
 }
 
 
-void Galaxy::randomizeProbes(vector<Probe>& ) {
+void Galaxy::randomizeOrder(){
    
-    srand(static_cast<unsigned>(time(0)));
+    double a;
+    int randomNumber;
 
-    for (int i = 0; i < probs.size(); ++i) {
-        // Generate a random index between i and the end of the array
-        int randomIndex = i + std::rand() % (probs.size() - i);
-        // Swap the current element with the randomly chosen element
-    swap(probs[i], probs[randomIndex]);
+    a = time(0) * 0.036; 
+
+    for (int i = 0; i < 10; i++) {
+
+        a = 0.29 * (a - 360) + 63.6;
+
+        randomNumber = static_cast<int>(a) % 10 + 1;  
+
+        swapProbeData(randomNumber, 10-randomNumber);
     }
     
-    cout << "Probes have been randomized." << endl;
 }
 
+void Galaxy::writeGalaxyToFile(){
+    fstream OutputFile("Galaxy.txt");
+    for(int i = 0 ; i < 10 ; i++){
+        OutputFile << probs[i].getName() << endl
+        << probs[i].getID() << endl
+        << probs[i].getDimension(0) << endl << probs[i].getDimension(1) << endl
+        << probs[i].getPosition(0) << endl << probs[i].getPosition(1) << endl
+        << probs[i].getArea() << endl << endl;
+    }
+}
