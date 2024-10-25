@@ -32,10 +32,6 @@ void Galaxy::sortByName(){
             }
         }
     }
-    cout << "Current order of probes" << endl;
-    for (int i = 0; i < probs.size(); ++i ) {
-        cout << i + 1 << ". " << probs[i].getName() << endl;
-    }
 }
 
 void Galaxy::displayProbe(int index){
@@ -52,6 +48,10 @@ void Galaxy::sortByarea() {
             }
         }
     }
+    cout << "Current order of probes: " << endl;
+    for (int i = 0; i < probs.size(); ++i ) {
+        cout << i + 1 << ". " << probs[i].getName() << "(Area: " << probs[i].getArea() << ")" << endl;
+    }
 }
 
 void Galaxy::sortByID(){
@@ -62,7 +62,7 @@ void Galaxy::sortByID(){
             }
         }
     }
-        cout << "Current order of probes" << endl;
+    cout << "Current order of probes" << endl;
     for (int i = 0; i < probs.size(); ++i ) {
         cout << i + 1 << ". " << probs[i].getName() << "(ID: " << probs[i].getID() << ")" << endl;
     }
@@ -170,5 +170,7 @@ void Galaxy::insertProbeData(int galaxyIdx, int probeIdx, int value) {
 }
 
 void Galaxy::printAllNames(){
-
+    for(int i = 0 ; i < 10 ; i++){
+        cout << i << ". " << probs[i].getName() << endl;
+    }
 }

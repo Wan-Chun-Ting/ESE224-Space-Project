@@ -94,15 +94,17 @@ int main(){
         case 1:
             cout << "Probes sorted by name." << endl << endl;
             galaxy.sortByName();
+            cout << "Current order of probes" << endl;
+            galaxy.printAllNames();
+            
             break;
         case 2:
             cout << "Probes sorted by ID." << endl << endl;
             galaxy.sortByID();
-            
             break;
         case 3:
-            galaxy.sortByarea();
             cout << "Probes sorted by area." << endl;
+            galaxy.sortByarea();
             break;
         case 4:
             // Add code to randomize probe order
