@@ -247,3 +247,7 @@ vector<int> Galaxy::collision_detection(int index){
     }
     return result;
 }
+
+void Galaxy::copyProbe(int src, int dest){
+    probs[dest] = probs[src];
+}
