@@ -17,7 +17,7 @@ class Galaxy{
         Probe searchProbeByID(int id);
         void swapProbeData(int idx1, int idx2);
         void insertProbeData(int probs_index, int dim_pos, int options, int value);
-        void copyProbe(int src, int dest);
+        void copyProbe(int idx1, int idx2);
         void displayProbe(int idx1);
 
        
