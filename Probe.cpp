@@ -75,29 +75,30 @@ void Probe::operator<<(Probe& other){
 void Probe::operator-(Probe& other){
     // swap
     string name_temp;
-    int num_temp, d0, d1, p0, p1;
+    int num_temp;
+    double area_temp;
+    array<int, 2> d_temp;
+    array<int, 2> p_temp;
 
-    name_temp = other.getName();
-    d0 = other.getDimension(0);
-    d1 = other.getDimension(1);
-    p0 = other.getPosition(0);
-    p1 = other.getPosition(1);
+    
+    other.name = name_temp;
+    other.ID = num_temp;
+    other.dimensions = d_temp;
+    other.area = area_temp;
+    other.positions = p_temp;
 
-    other.setName(getName());
-    other.setDimension(0, getDimension(0));
-    other.setDimension(1, getDimension(1));
-    other.setPosition(0, getPosition(0));
-    other.setPosition(1, getPosition(1));
-    other.calculateArea();
+    other.name = name;
+    other.ID = ID;
+    other.dimensions = dimensions;
+    other.area = area;
+    other.positions = positions;
+    
+    name = name_temp;
+    ID = num_temp;
+    dimensions = d_temp;
+    area = area_temp;
+    positions = p_temp;
 
-    setName(name_temp);
-    setDimension(0, d0);
-    setDimension(1, d1);
-    setPosition(0, p0);
-    setPosition(1, p1);
-    calculateArea();
-
-    cout << endl <<  "Probe data swapped sucessfully." << endl << endl;
 }
 
 
@@ -113,16 +114,3 @@ void Probe::displayProbe() const{
     cout << "Positions: [" << positions[0] << ", " << positions[1] << "]" << endl;
 }
 
-void randomizeProbes(vector<Probe>& probs) {
-   
-    srand(static_cast<unsigned>(time(0)));
-
-    for (int i = 0; i < probs.size(); ++i) {
-        // Generate a random index between i and the end of the array
-        size_t randomIndex = i + std::rand() % (probs.size() - i);
-        // Swap the current element with the randomly chosen element
-    swap(probs[i], probs[randomIndex]);
-    }
-    
-    cout << "Probes have been randomized." << endl;
-}
