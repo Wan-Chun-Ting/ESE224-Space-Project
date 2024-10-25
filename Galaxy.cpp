@@ -154,7 +154,7 @@ void Galaxy::swapProbeData(int idx1, int idx2){
 
 }
 void Galaxy::insertProbeData(int galaxyIdx, int probeIdx, int value){
-    
+
 }
 
 void Galaxy::randomizeOrder(){

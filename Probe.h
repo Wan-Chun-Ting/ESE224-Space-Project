@@ -27,15 +27,11 @@ class Probe{
         double getArea() const;
         int getPosition(int index) const;
 
-        // Mutator methods
         void setName(const std::string& newName);
         void setID(int newID);
         void setDimension(int index, int value);
         void setPosition(int index, int value);
 
-        // Other methods
-        void calculateArea();  // Recalculate area when dimensions change
+        void calculateArea();
         void displayProbe() const;
-
-        //need accessor and mutated methods
 };

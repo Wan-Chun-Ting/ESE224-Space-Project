@@ -54,8 +54,9 @@ int main(){
     }
 
     bool contin = true;
-    int choice, index, source, destin;
+    int choice, index, source, destin, n, nn;
     string temp_word;
+    double new_value;
 
     // main menu
     while(contin){
@@ -116,7 +117,13 @@ int main(){
         else if (choice == 10) {
             cout << "Enter the index of the probe to modify: ";
             cin >> index;
-            
+            cout << "Enter 0 to modify dimension, 1 to modify position: ";
+            cin >> n;
+            cout << "Enter the index to modify(): ";
+            cin >> nn;
+            cout << "Enter the new value: ";
+            cin >> new_value;
+            galaxy.insertProbeData(n, nn, new_value);
         }
         else if(choice == 11){
             cout << "Enter the index of the source probe: " << endl;
