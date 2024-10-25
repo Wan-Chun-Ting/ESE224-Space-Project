@@ -20,6 +20,7 @@ class Galaxy{
         void copyProbe(int idx1, int idx2);
         void displayProbe(int idx1);
 
+       
         void randomizeOrder();
         void printAllNames();
         void writeGalaxyToFile();
