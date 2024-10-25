@@ -25,5 +25,6 @@ class Galaxy{
         void printAllNames();
         void writeGalaxyToFile();
 
+        vector<int>collision_detection(int index);
 
 };

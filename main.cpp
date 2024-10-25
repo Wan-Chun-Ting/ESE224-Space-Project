@@ -87,6 +87,7 @@ int main(){
     cout << "11. Copy Probe" << endl;
     cout << "12. Display Probe" << endl;
     cout << "13. Quit" << endl;
+    cout << "14. Return a list of name for each Probe that would collide" << endl;
 
     cout << "Enter your choice (1-13): ";
     cin >> choice;
@@ -194,6 +195,20 @@ int main(){
         case 13:
             cout << "Thank you for using Galactic Explorer System. Goodbye!" << endl;
             contin = false;
+            break;
+        case 14:
+            cout << "List of Probes that can collide with each other: " << endl;
+
+            for(int i = 0 ; i < 10 ; i++){
+                cout << galaxy.retrieve(i).getName() << " can collide with ";
+
+                vector<int> a = galaxy.collision_detection(i);
+                for(int j = 0 ; j < a.size() ; j++){
+                    cout << galaxy.retrieve(a[j]).getName()<< ", ";
+                }
+                cout << endl;
+            }
+
             break;
         default:
             cout << "Invalid choice. Please enter a number between 1 and 13." << endl;

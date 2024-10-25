@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <ostream>
+#include <vector>
 
 
 
@@ -213,4 +214,36 @@ void Galaxy::writeGalaxyToFile(){
         << probs[i].getPosition(0) << endl << probs[i].getPosition(1) << endl
         << probs[i].getArea() << endl << endl;
     }
+}
+
+vector<int> Galaxy::collision_detection(int index){
+
+    vector<int> result;
+
+    double upper, lower, source_upper, source_lower, samller_area;
+
+    source_upper = probs[index].getPosition(1) + (probs[index].getDimension(1) / 2);
+    source_lower = probs[index].getPosition(1) - (probs[index].getDimension(1) / 2);
+
+    for(int i = 0 ; i < 10 ; i++){
+        if( i != index){
+            upper = probs[i].getPosition(1) + (probs[i].getDimension(1) / 2);
+            lower = probs[i].getPosition(1) - (probs[i].getDimension(1) / 2);
+
+            if(probs[i].getArea() <= probs[index].getArea()){
+                samller_area = probs[i].getArea();
+            }
+            else{
+                samller_area = probs[index].getArea();
+            }
+            
+            if(source_upper >= lower && (source_upper - lower) <= samller_area){
+                result.push_back(i);
+            }
+            else if (source_lower <= upper && (upper - source_lower) <= samller_area) {
+                result.push_back(i);
+            }
+        }
+    }
+    return result;
 }
