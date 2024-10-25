@@ -107,7 +107,8 @@ int main(){
             galaxy.sortByarea();
             break;
         case 4:
-            // Add code to randomize probe order
+            cout << "Probes randomized" << endl;
+            galaxy.randomizeOrder();
             break;
         case 5:
             galaxy.printAllNames();
