@@ -113,3 +113,17 @@ void Probe::displayProbe() const{
     cout << "Area: " << area << endl;
     cout << "Positions: [" << positions[0] << ", " << positions[1] << "]" << endl;
 }
+
+void randomizeProbes(vector<Probe>& probs) {
+   
+    srand(static_cast<unsigned>(time(0)));
+
+    for (int i = 0; i < probs.size(); ++i) {
+        // Generate a random index between i and the end of the array
+        size_t randomIndex = i + std::rand() % (probs.size() - i);
+        // Swap the current element with the randomly chosen element
+    swap(probs[i], probs[randomIndex]);
+    }
+    
+    cout << "Probes have been randomized." << endl;
+}
