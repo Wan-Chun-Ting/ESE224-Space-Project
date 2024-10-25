@@ -12,7 +12,7 @@ class Galaxy{
 
         void sortByName();
         void sortByID();
-        void sortByarea(double area);
+        void sortByarea();
         Probe searchProbeByName(const string& name);
         Probe searchProbeByID(int id);
         void swapProbeData(int idx1, int idx2);
@@ -20,6 +20,7 @@ class Galaxy{
         void copyProbe(int idx1, int idx2);
         void displayProbe(int idx1);
 
+        void insertProbeData(int galaxyIdx, int probeIdx, int value);
         void randomizeOrder();
         void printAllNames();
         void writeGalaxyToFile();

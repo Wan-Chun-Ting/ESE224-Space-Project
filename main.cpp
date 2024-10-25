@@ -28,7 +28,7 @@ int main(){
         ProbesInput >> id;
         cout << user << id;
         Probe p;
-        
+
         // galaxy.add_Probe(a);
     }
 
@@ -55,6 +55,7 @@ int main(){
 
     bool contin = true;
     int choice, index, source, destin;
+    string temp_word;
 
     // main menu
     while(contin){
@@ -78,26 +79,52 @@ int main(){
 
         if(choice == 1){
             cout << "Probes sorted by name." << endl;
-
+            galaxy.sortByName();
         }
         else if(choice == 2){
             cout << "Probes sorted by ID." << endl;
+            galaxy.sortByID();
         }
         else if(choice == 3){
             cout << "Probes sorted by area." << endl;
+            galaxy.sortByarea();
+        }
+        else if (choice == 4) {
+            
+        }
+        else if (choice == 5) {
+            galaxy.printAllNames();
         }
         else if(choice == 6){
             cout << "Enter the name of the probe to search: " << endl;
+            cin >> temp_word;
+            galaxy.searchProbeByName(temp_word);
         }
         else if(choice == 7){
             cout << "Enter the ID of the probe to search: " << endl;
+            cin >> index;
+            galaxy.searchProbeByID(index);
+        }
+        else if (choice == 9) {
+            cout << "Enter the index of the first probe: ";
+            cin >> source;
+            cout << "Enter the index of the second probe: ";
+            cin >> destin;
+
+            galaxy.swapProbeData(source, destin);
+        }
+        else if (choice == 10) {
+            cout << "Enter the index of the probe to modify: ";
+            cin >> index;
+            
         }
         else if(choice == 11){
             cout << "Enter the index of the source probe: " << endl;
             cin >> source;
             cout << "Enter the index of the destination probe: " << endl;
             cin >> destin;
-            
+
+
         }
         else if(choice == 12){
             cout << "Enter the index of the probe to display: " << endl;

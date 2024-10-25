@@ -51,7 +51,6 @@ void Probe::setDimension(int index, int value) {
     }
 }
 
-// Mutator for setting a specific position (x or y coordinate)
 void Probe::setPosition(int index, int value) {
     if (index == 0 || index == 1) {
         positions[index] = value;

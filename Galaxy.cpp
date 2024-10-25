@@ -25,33 +25,33 @@ Probe Galaxy::retrieve(int index){
 
 
 void Galaxy::sortByName(){
-    for (int i = 0; i < probes.size(); ++i) {
-        for (int j = 0; j < probes.size() - 1 - i; ++j) {
-            if (probes[j].getName() > probes[j + 1].getName()) {
-                swap(probes[j], probes[j + 1]);
+    for (int i = 0; i < probs.size(); ++i) {
+        for (int j = 0; j < probs.size() - 1 - i; ++j) {
+            if (probs[j].getName() > probs[j + 1].getName()) {
+                swap(probs[j], probs[j + 1]);
             }
         }
     }
     cout << "Current order of probes" << endl;
 
-    for (int i = 0; i < probes.size(); ++i ) {
-        cout << i + 1 << ". " << probes[i].getName() << endl;
+    for (int i = 0; i < probs.size(); ++i ) {
+        cout << i + 1 << ". " << probs[i].getName() << endl;
     }
 }
 
 
 void Galaxy::sortByID(){
-    for (int i = 0; i < probes.size(); ++i) {
-        for (int j = 0; j < probes.size() - 1 - i; ++j) {
-            if (probes[j].getID() > probes[j + 1].getID()) {
-                swap(probes[j], probes[j + 1]);
+    for (int i = 0; i < probs.size(); ++i) {
+        for (int j = 0; j < probs.size() - 1 - i; ++j) {
+            if (probs[j].getID() > probs[j + 1].getID()) {
+                swap(probs[j], probs[j + 1]);
             }
         }
     }
         cout << "Current order of probes" << endl;
 
-    for (int i = 0; i < probes.size(); ++i ) {
-        cout << i + 1 << ". " << probes[i].getName() << "(ID: " << probes[i].getID() << ")" << endl;
+    for (int i = 0; i < probs.size(); ++i ) {
+        cout << i + 1 << ". " << probs[i].getName() << "(ID: " << probs[i].getID() << ")" << endl;
     }
 }
 
@@ -61,16 +61,16 @@ void Galaxy::displayProbe(int index){
 }
 
  
- void Galaxy::sortByArea(double area)
+ void Galaxy::sortByarea()
 {
     // This matches your provided sortByArea function
-    for (int i = 0; i < probes.size() - 1; ++i)
+    for (int i = 0; i < probs.size() - 1; ++i)
     {
-        for (int j = 0; j < probes.size() - i - 1; ++j)
+        for (int j = 0; j < probs.size() - i - 1; ++j)
         {
-            if (probes[j].getArea() > probes[j + 1].getArea())
+            if (probs[j].getArea() > probs[j + 1].getArea())
             {
-                swapProbes(probes[j], probes[j + 1]);
+                swapProbes(probs[j], probs[j + 1]);
             }
         }
     }
@@ -99,11 +99,11 @@ int binarySearchByName(const std::vector<Probe>& probes, const std::string& name
 Probe Galaxy::searchProbeByName(const std::string& name)
 {
     sortByName();  // Sort by name before performing binary search
-    int index = binarySearchByName(probes, name);
+    int index = binarySearchByName(probs, name);
 
     if (index != -1)
     {
-        return probes[index];
+        return probs[index];
     }
     else
     {
@@ -153,4 +153,22 @@ int binarySearchByID(const std::vector<Probe>& probes, int id)
 void Galaxy::swapProbeData(int idx1, int idx2){
 
 }
-void Galaxy::insertProbeData();
+void Galaxy::insertProbeData(int galaxyIdx, int probeIdx, int value){
+    
+}
+
+void Galaxy::randomizeOrder(){
+
+}
+
+void Galaxy::printAllNames(){
+    cout << "All Probe Names: " << endl;
+    
+    for(int i = 0 ; i < 10 ; i++){
+        cout << i << ". " << probs[i].getName() << endl;
+    }
+}
+
+void Galaxy::writeGalaxyToFile(){
+
+}
