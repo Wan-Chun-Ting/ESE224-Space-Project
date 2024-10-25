@@ -27,7 +27,7 @@ class Probe{
         void setID(int newID);
         void setDimension(int index, int value);
         void setPosition(int index, int value);
-        void randomizeProbes(vector<Probe>& probs);
+    
         void calculateArea();
         void displayProbe() const;
 };
