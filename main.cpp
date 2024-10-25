@@ -1,6 +1,8 @@
 
 
+#include <_stdio.h>
 #include <array>
+#include <cctype>
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -13,24 +15,11 @@ using namespace std;
 int main(){
     ifstream InputFile("users.txt");
     ifstream ProbesInput("Probes.txt");
-    string user, password;
-    string input_user, input_password;
+    string user, password, input_user, input_password;
     bool credential = false;
     int id;
     array<int, 2> dim, pos;
     Galaxy galaxy;
-
-    // read from Probes.txt
-    for(int i = 0 ; i < 10 ; i++){
-        // ProbesInput >> user >> id >> dim[0] >> dim[1] >> pos[0] >> pos[1];
-        // cout << user << id << dim[0] << dim[1] << pos[0] << pos[1] << endl;
-        ProbesInput >> user;
-        ProbesInput >> id;
-        cout << user << id;
-        Probe p;
-
-        // galaxy.add_Probe(a);
-    }
 
 
     InputFile >>  user >> password;
@@ -52,6 +41,30 @@ int main(){
             credential = true;
         }
     }
+
+    string Probe_name;
+
+    // read from Probes.txt
+    while(!ProbesInput.eof()){
+        
+        getline(ProbesInput, Probe_name);
+
+        if(isalpha(Probe_name[0]) && !Probe_name.empty()){
+            ProbesInput >> id >> dim[0] >> dim[1] >> pos[0] >> pos[1];
+            Probe p;
+            p.setName(Probe_name);
+            p.setID(id);
+            p.setDimension(0, dim[0]);
+            p.setDimension(1, dim[1]);
+            p.setPosition(0, pos[0]);
+            p.setPosition(1, pos[1]);
+
+            galaxy.add_Probe(p);
+        }
+    }
+
+
+    
 
     bool contin = true;
     int choice, index, source, destin, n, nn;
@@ -134,7 +147,7 @@ int main(){
 
         }
         else if(choice == 12){
-            cout << "Enter the index of the probe to display: " << endl;
+            cout << "Enter the index of the probe to display: ";
             cin >> index;
             cout << endl << "Probe Details:" << endl;
             galaxy.displayProbe(index);
