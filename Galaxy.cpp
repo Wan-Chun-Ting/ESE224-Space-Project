@@ -25,7 +25,17 @@ Probe Galaxy::retrieve(int index){
 
 
 void Galaxy::sortByName(){
-    cout << "Current order of probs: " << endl;
+    for (int i = 0; i < probs.size(); ++i) {
+        for (int j = 0; j < probs.size() - 1 - i; ++j) {
+            if (probs[j].getName() > probs[j + 1].getName()) {
+                swap(probs[j], probs[j + 1]);
+            }
+        }
+    }
+    cout << "Current order of probes" << endl;
+    for (int i = 0; i < probs.size(); ++i ) {
+        cout << i + 1 << ". " << probs[i].getName() << endl;
+    }
 }
 
 void Galaxy::displayProbe(int index){

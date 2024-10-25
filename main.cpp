@@ -92,12 +92,13 @@ int main(){
 
     switch (choice) {
         case 1:
+            cout << "Probes sorted by name." << endl << endl;
             galaxy.sortByName();
-            cout << "Probes sorted by name." ;
             break;
         case 2:
+            cout << "Probes sorted by ID." << endl << endl;
             galaxy.sortByID();
-            cout << "Probes sorted by ID." ;
+            
             break;
         case 3:
             galaxy.sortByarea();
