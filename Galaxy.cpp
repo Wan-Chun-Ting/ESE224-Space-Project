@@ -25,51 +25,19 @@ Probe Galaxy::retrieve(int index){
 
 
 void Galaxy::sortByName(){
-    for (int i = 0; i < probs.size(); ++i) {
-        for (int j = 0; j < probs.size() - 1 - i; ++j) {
-            if (probs[j].getName() > probs[j + 1].getName()) {
-                swap(probs[j], probs[j + 1]);
-            }
-        }
-    }
-    cout << "Current order of probes" << endl;
-
-    for (int i = 0; i < probs.size(); ++i ) {
-        cout << i + 1 << ". " << probs[i].getName() << endl;
-    }
+    cout << "Current order of probs: " << endl;
 }
-
-
-void Galaxy::sortByID(){
-    for (int i = 0; i < probs.size(); ++i) {
-        for (int j = 0; j < probs.size() - 1 - i; ++j) {
-            if (probs[j].getID() > probs[j + 1].getID()) {
-                swap(probs[j], probs[j + 1]);
-            }
-        }
-    }
-        cout << "Current order of probes" << endl;
-
-    for (int i = 0; i < probs.size(); ++i ) {
-        cout << i + 1 << ". " << probs[i].getName() << "(ID: " << probs[i].getID() << ")" << endl;
-    }
-}
-
 
 void Galaxy::displayProbe(int index){
     probs[index].displayProbe();
 }
 
  
- void Galaxy::sortByarea()
-{
-    // This matches your provided sortByArea function
-    for (int i = 0; i < probs.size() - 1; ++i)
-    {
-        for (int j = 0; j < probs.size() - i - 1; ++j)
-        {
-            if (probs[j].getArea() > probs[j + 1].getArea())
-            {
+
+void Galaxy::sortByarea() {
+    for (int i = 0; i < probs.size() - 1; ++i) {
+        for (int j = 0; j < probs.size() - i - 1; ++j) {
+            if (probs[j].getArea() > probs[j + 1].getArea()) {
                 swapProbes(probs[j], probs[j + 1]);
             }
         }
@@ -78,18 +46,18 @@ void Galaxy::displayProbe(int index){
 
 
 
-int binarySearchByName(const std::vector<Probe>& probes, const std::string& name)
+int binarySearchByName(const vector<Probe>& probs, const std::string& name)
 {
     int left = 0;
-    int right = probes.size() - 1;
+    int right = probs.size() - 1;
 
     while (left <= right)
     {
         int mid = left + (right - left) / 2;
 
-        if (probes[mid].getName() == name)
+        if (probs[mid].getName() == name)
             return mid;
-        if (probes[mid].getName() < name)
+        if (probs[mid].getName() < name)
             left = mid + 1;
         else
             right = mid - 1;
@@ -112,18 +80,19 @@ Probe Galaxy::searchProbeByName(const std::string& name)
     }
 }
 
-int binarySearchByID(const vector<Probe>& probes, int id)
+
+int binarySearchByID(const vector<Probe>& probs, int id)
 {
     int left = 0;
-    int right = probes.size() - 1;
+    int right = probs.size() - 1;
 
     while (left <= right)
     {
         int mid = left + (right - left) / 2;
 
-        if (probes[mid].getID() == id)
+        if (probs[mid].getID() == id)
             return mid;
-        if (probes[mid].getID() < id)
+        if (probs[mid].getID() < id)
             left = mid + 1;
         else
             right = mid - 1;
@@ -131,44 +100,34 @@ int binarySearchByID(const vector<Probe>& probes, int id)
     return -1;  // Probe not found
 }
 
-int binarySearchByID(const std::vector<Probe>& probes, int id)
+void Galaxy::swapProbeData(int idx1, int idx2)
 {
-    int left = 0;
-    int right = probes.size() - 1;
-
-    while (left <= right)
+    if (idx1 >= 0 && idx1 < probs.size() && idx2 >= 0 && idx2 < probs.size())
     {
-        int mid = left + (right - left) / 2;
-
-        if (probes[mid].getID() == id)
-            return mid;
-        if (probes[mid].getID() < id)
-            left = mid + 1;
-        else
-            right = mid - 1;
+        // Use the overloaded '-' operator to swap dimensions, positions, and areas
+        probs[idx1] - probs[idx2];  
     }
-    return -1;  // Probe not found
-}
-
-void Galaxy::swapProbeData(int idx1, int idx2){
-
-}
-void Galaxy::insertProbeData(int galaxyIdx, int probeIdx, int value){
-
-}
-
-void Galaxy::randomizeOrder(){
-
-}
-
-void Galaxy::printAllNames(){
-    cout << "All Probe Names: " << endl;
-    
-    for(int i = 0 ; i < 10 ; i++){
-        cout << i << ". " << probs[i].getName() << endl;
+    else
+    {
+        std::cerr << "Index out of range." << std::endl;
     }
 }
 
-void Galaxy::writeGalaxyToFile(){
 
+
+void Galaxy::insertProbeData(int galaxyIdx, int probeIdx, int value) {
+    // Check for valid galaxy index and probe index
+    if (galaxyIdx < 0 || galaxyIdx >= probs.size() || 
+        probeIdx < 0 || probeIdx > 1) {  // Only two dimensions
+        std::cerr << "Error: Invalid index." << std::endl;
+        return;
+    }
+
+    // Determine if we are inserting into dimensions or positions
+    if (galaxyIdx < 2) {
+        probs[galaxyIdx].setDimension(galaxyIdx, value);
+    } else {
+        probs[galaxyIdx].setPosition(probeIdx, value);
+    }
 }
+
