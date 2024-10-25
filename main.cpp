@@ -80,11 +80,11 @@ int main(){
     switch (choice) {
         case 1:
             galaxy.sortByName();
-            cout << "Probes sorted by name." << endl;
+            cout << "Probes sorted by name." ;
             break;
         case 2:
             galaxy.sortByID();
-            cout << "Probes sorted by ID." << endl;
+            cout << "Probes sorted by ID." ;
             break;
         case 3:
             galaxy.sortByarea();
