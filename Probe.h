@@ -3,10 +3,6 @@
 #include <array>
 #include <string>
 
-
-// dimentions = [length, width]
-// position = [x, y]
-
 using namespace std;
 class Probe{
     private:
@@ -20,22 +16,22 @@ class Probe{
 
         void operator<<(Probe& p2);
         void operator-(Probe& p2);
+// Accessor methods
+    string getName() const;
+    int getID() const;
+    int getDimension(int index) const;
+    double getArea() const;
+    int getPosition(int index) const;
 
-        string getName() const;
-        int getID() const;
-        int getDimension(int index) const;
-        double getArea() const;
-        int getPosition(int index) const;
+    // Mutator methods
+    void setName(const std::string& newName);
+    void setID(int newID);
+    void setDimension(int index, int value);
+    void setPosition(int index, int value);
 
-        // Mutator methods
-        void setName(const std::string& newName);
-        void setID(int newID);
-        void setDimension(int index, int value);
-        void setPosition(int index, int value);
-
-        // Other methods
-        void calculateArea();  // Recalculate area when dimensions change
-        void displayProbe() const;
+    // Other methods
+    void calculateArea();  // Recalculate area when dimensions change
+    void displayProbe() const;
 
         //need accessor and mutated methods
 };
