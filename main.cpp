@@ -70,6 +70,7 @@ int main(){
     int choice, index, source, destin, n, nn;
     string temp_word;
     double new_value;
+    Probe result;
 
     // main menu
     while (contin) {
@@ -94,17 +95,25 @@ int main(){
         case 1:
             cout << "Probes sorted by name." << endl << endl;
             galaxy.sortByName();
-            cout << "Current order of probes" << endl;
+            cout << "Current order of probes: " << endl;
             galaxy.printAllNames();
             
             break;
         case 2:
             cout << "Probes sorted by ID." << endl << endl;
             galaxy.sortByID();
+            cout << "Current order of probes: " << endl;
+            for (int i = 0; i < 10; i++ ) {
+                cout << i + 1 << ". " << galaxy.retrieve(i).getName() << "(ID: " << galaxy.retrieve(i).getID() << ")" << endl;
+            }
             break;
         case 3:
             cout << "Probes sorted by area." << endl;
             galaxy.sortByarea();
+            cout << "Current order of probes: " << endl;
+            for (int i = 0; i < 10; ++i ) {
+                cout << i + 1 << ". " << galaxy.retrieve(i).getName() << "(Area: " << galaxy.retrieve(i).getArea() << ")" << endl;
+            }
             break;
         case 4:
             // Add code to randomize probe order
@@ -115,7 +124,12 @@ int main(){
         case 6:
             cout << "Enter the name of the probe to search: ";
             cin >> temp_word;
-            galaxy.searchProbeByName(temp_word);
+            
+            result = galaxy.searchProbeByName(temp_word);
+            if(result.getID()){
+                cout << endl << "Probe found: " << endl;
+                result.displayProbe();
+            }
             break;
         case 7:
             cout << "Enter the ID of the probe to search: ";
@@ -134,18 +148,25 @@ int main(){
             cin >> index;
             cout << "Enter 0 to modify dimension, 1 to modify position: ";
             cin >> n;
-            cout << "Enter the index to modify: ";
-            cin >> nn;
+            cout << "Enter the index to modify ";
+            if(n == 0){
+                cout << "(0 for length, 1 for width): ";
+                cin >> nn;
+            }
+            else{
+                cout << "(0 for x, 1 for y): ";
+                cin >> nn;
+            }
             cout << "Enter the new value: ";
             cin >> new_value;
-            galaxy.insertProbeData(n, nn, new_value);
+            galaxy.insertProbeData(index, n, nn, new_value);
             break;
         case 11:
             cout << "Enter the index of the source probe: ";
             cin >> source;
             cout << "Enter the index of the destination probe: ";
             cin >> destin;
-            // Add code to copy probe from source to destination
+            galaxy.copyProbe(source, destin);
             break;
         case 12:
             cout << "Enter the index of the probe to display: ";
