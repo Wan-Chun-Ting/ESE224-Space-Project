@@ -44,6 +44,19 @@ void Galaxy::sortByarea() {
     }
 }
 
+void Galaxy::sortByID(){
+    for (int i = 0; i < probs.size(); ++i) {
+        for (int j = 0; j < probs.size() - 1 - i; ++j) {
+            if (probs[j].getID() > probs[j + 1].getID()) {
+                swap(probs[j], probs[j + 1]);
+            }
+        }
+    }
+        cout << "Current order of probes" << endl;
+    for (int i = 0; i < probs.size(); ++i ) {
+        cout << i + 1 << ". " << probs[i].getName() << "(ID: " << probs[i].getID() << ")" << endl;
+    }
+}
 
 
 int binarySearchByName(const vector<Probe>& probs, const std::string& name)
@@ -131,3 +144,6 @@ void Galaxy::insertProbeData(int galaxyIdx, int probeIdx, int value) {
     }
 }
 
+void Galaxy::printAllNames(){
+
+}
