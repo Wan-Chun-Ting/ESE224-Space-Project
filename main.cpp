@@ -72,93 +72,93 @@ int main(){
     double new_value;
 
     // main menu
-    while(contin){
-        
-        cout << endl << "1. Sort Probes by Name" << endl;
-        cout << "2. Sort Probes by ID" << endl;
-        cout << "3. Sort Probes by Area" << endl;
-        cout << "4. Randomize Probe Order" << endl;
-        cout << "5. Print All Probe Names" << endl;
-        cout << "6. Search Probe by Name" << endl;
-        cout << "7. Search Probe by ID" << endl;
-        cout << "8. Write Galaxy to File" << endl;
-        cout << "9. Swap Probe Data" << endl;
-        cout << "10. Insert Probe Data" << endl;
-        cout << "11. Copy Probe" << endl;
-        cout << "12. Display Probe" << endl;
-        cout << "13. Quit" << endl;
+    while (contin) {
+    cout << endl << "1. Sort Probes by Name" << endl;
+    cout << "2. Sort Probes by ID" << endl;
+    cout << "3. Sort Probes by Area" << endl;
+    cout << "4. Randomize Probe Order" << endl;
+    cout << "5. Print All Probe Names" << endl;
+    cout << "6. Search Probe by Name" << endl;
+    cout << "7. Search Probe by ID" << endl;
+    cout << "8. Write Galaxy to File" << endl;
+    cout << "9. Swap Probe Data" << endl;
+    cout << "10. Insert Probe Data" << endl;
+    cout << "11. Copy Probe" << endl;
+    cout << "12. Display Probe" << endl;
+    cout << "13. Quit" << endl;
 
-        cout << "Enter your choice (1-13): ";
-        cin >> choice;
+    cout << "Enter your choice (1-13): ";
+    cin >> choice;
 
-        if(choice == 1){
-            cout << "Probes sorted by name." << endl;
+    switch (choice) {
+        case 1:
             galaxy.sortByName();
-        }
-        else if(choice == 2){
-            cout << "Probes sorted by ID." << endl;
+            cout << "Probes sorted by name." ;
+            break;
+        case 2:
             galaxy.sortByID();
-        }
-        else if(choice == 3){
-            cout << "Probes sorted by area." << endl;
+            cout << "Probes sorted by ID." ;
+            break;
+        case 3:
             galaxy.sortByarea();
-        }
-        else if (choice == 4) {
-            
-        }
-        else if (choice == 5) {
+            cout << "Probes sorted by area." << endl;
+            break;
+        case 4:
+            // Add code to randomize probe order
+            break;
+        case 5:
             galaxy.printAllNames();
-        }
-        else if(choice == 6){
-            cout << "Enter the name of the probe to search: " << endl;
+            break;
+        case 6:
+            cout << "Enter the name of the probe to search: ";
             cin >> temp_word;
             galaxy.searchProbeByName(temp_word);
-        }
-        else if(choice == 7){
-            cout << "Enter the ID of the probe to search: " << endl;
+            break;
+        case 7:
+            cout << "Enter the ID of the probe to search: ";
             cin >> index;
             galaxy.searchProbeByID(index);
-        }
-        else if (choice == 9) {
+            break;
+        case 9:
             cout << "Enter the index of the first probe: ";
             cin >> source;
             cout << "Enter the index of the second probe: ";
             cin >> destin;
-
             galaxy.swapProbeData(source, destin);
-        }
-        else if (choice == 10) {
+            break;
+        case 10:
             cout << "Enter the index of the probe to modify: ";
             cin >> index;
             cout << "Enter 0 to modify dimension, 1 to modify position: ";
             cin >> n;
-            cout << "Enter the index to modify(): ";
+            cout << "Enter the index to modify: ";
             cin >> nn;
             cout << "Enter the new value: ";
             cin >> new_value;
             galaxy.insertProbeData(n, nn, new_value);
-        }
-        else if(choice == 11){
-            cout << "Enter the index of the source probe: " << endl;
+            break;
+        case 11:
+            cout << "Enter the index of the source probe: ";
             cin >> source;
-            cout << "Enter the index of the destination probe: " << endl;
+            cout << "Enter the index of the destination probe: ";
             cin >> destin;
-
-
-        }
-        else if(choice == 12){
+            // Add code to copy probe from source to destination
+            break;
+        case 12:
             cout << "Enter the index of the probe to display: ";
             cin >> index;
             cout << endl << "Probe Details:" << endl;
             galaxy.displayProbe(index);
-        }
-        else if(choice == 13){
+            break;
+        case 13:
             cout << "Thank you for using Galactic Explorer System. Goodbye!" << endl;
             contin = false;
-        }
+            break;
+        default:
+            cout << "Invalid choice. Please enter a number between 1 and 13." << endl;
+            break;
     }
-
-
+}
 
     
 }
