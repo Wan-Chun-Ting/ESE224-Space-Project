@@ -1,4 +1,3 @@
-
 #include "Galaxy.h"
 #include <cstdio>
 #include <fstream>
@@ -7,9 +6,6 @@
 #include <ctime>
 #include <ostream>
 #include <vector>
-
-
-
 using namespace std;
 
 void swapProbes(Probe& a, Probe& b)
@@ -56,10 +52,6 @@ void Galaxy::sortByarea() {
             }
         }
     }
-    cout << "Current order of probes: " << endl;
-    for (int i = 0; i < probs.size(); ++i ) {
-        cout << i + 1 << ". " << probs[i].getName() << "(Area: " << probs[i].getArea() << ")" << endl;
-    }
 }
 
 void Galaxy::sortByID(){
@@ -69,10 +61,6 @@ void Galaxy::sortByID(){
                 swap(probs[j], probs[j + 1]);
             }
         }
-    }
-    cout << "Current order of probes" << endl;
-    for (int i = 0; i < probs.size(); ++i ) {
-        cout << i + 1 << ". " << probs[i].getName() << "(ID: " << probs[i].getID() << ")" << endl;
     }
 }
 
@@ -97,18 +85,16 @@ int binarySearchByName(const vector<Probe>& probs, const std::string& name)
 }
 Probe Galaxy::searchProbeByName(const std::string& name)
 {
-    sortByName();  // Sort by name before performing binary search
+    sortByName();
     int index = binarySearchByName(probs, name);
 
     if (index != -1)
     {
-        cout << endl << "Probe found: " << endl;
-        probs[index].displayProbe();
         return probs[index];
     }
     else
     {
-        std::cerr << "Probe not found by name: " << name << std::endl;
+        cerr << "Probe not found by name: " << name << endl;
         return Probe();  // Return an empty Probe
     }
 }
@@ -144,7 +130,7 @@ Probe Galaxy::searchProbeByID(int id)
     }
     else
     {
-        std::cerr << "Probe not found by ID: " << id << std::endl;
+        cerr << "Probe not found by ID: " << id << std::endl;
         return Probe();  // Return an empty Probe
     }
 }
@@ -152,12 +138,11 @@ void Galaxy::swapProbeData(int idx1, int idx2)
 {
     if (idx1 >= 0 && idx1 < probs.size() && idx2 >= 0 && idx2 < probs.size())
     {
-        // Use the overloaded '-' operator to swap dimensions, positions, and areas
         probs[idx1] - probs[idx2];
     }
     else
     {
-        std::cerr << "Index out of range." << std::endl;
+        cerr << "Index out of range." << endl;
     }
 }
 
@@ -188,21 +173,10 @@ void Galaxy::printAllNames(){
 
 
 void Galaxy::randomizeOrder(){
-   
-    double a;
-    int randomNumber;
-
-    a = time(0) * 0.036; 
-
-    for (int i = 0; i < 10; i++) {
-
-        a = 0.29 * (a - 360) + 63.6;
-
-        randomNumber = static_cast<int>(a) % 10 + 1;  
-
-        swapProbeData(randomNumber, 10-randomNumber);
+    for (int i = probs.size() - 1; i > 0; --i) {
+        int j = (rand() % (i + 1));
+        swapProbeData(i, j);
     }
-    
 }
 
 void Galaxy::writeGalaxyToFile(){

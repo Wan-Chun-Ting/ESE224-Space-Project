@@ -1,5 +1,3 @@
-
-
 #include <_stdio.h>
 #include <array>
 #include <cctype>
@@ -14,7 +12,15 @@ using namespace std;
 
 int main(){
     ifstream InputFile("users.txt");
+    if (!InputFile) {
+        cerr << "Unable to open file example.txt" << endl;
+        return 1;
+    }
     ifstream ProbesInput("Probes.txt");
+    if (!ProbesInput) {
+        cerr << "Unable to open file example.txt" << endl;
+        return 1;
+    }
     string user, password, input_user, input_password;
     bool credential = false;
     int id;
@@ -22,9 +28,9 @@ int main(){
     Galaxy galaxy;
 
 
-    InputFile >>  user >> password;
-    cout << user << password;
-
+    InputFile >> user >> password;
+    // cout << user << password << endl;
+    
     // user login
     cout << "Login with credential" << endl;
     while (!credential) {
@@ -34,7 +40,7 @@ int main(){
         cout << "Password: ";
         cin >> input_password;
 
-        if((input_user != user) || (password != input_password)){
+        if((input_user != user) || (input_password != password)){
             cout << "User name or password does not match, input again" << endl;
         }
         else{
@@ -109,7 +115,7 @@ int main(){
             }
             break;
         case 3:
-            cout << "Probes sorted by area." << endl;
+            cout << "Probes sorted by area." << endl << endl;
             galaxy.sortByarea();
             cout << "Current order of probes: " << endl;
             for (int i = 0; i < 10; ++i ) {
@@ -117,7 +123,7 @@ int main(){
             }
             break;
         case 4:
-            cout << "Probes randomized" << endl;
+            cout << "Probe order randomized." << endl << endl;
             galaxy.randomizeOrder();
 
             cout << "Current order of probes: " << endl;
@@ -137,12 +143,20 @@ int main(){
             if(result.getID()){
                 cout << endl << "Probe found: " << endl;
                 result.displayProbe();
+            } else {
+                break;
             }
             break;
         case 7:
             cout << "Enter the ID of the probe to search: ";
             cin >> index;
-            galaxy.searchProbeByID(index);
+            result = galaxy.searchProbeByID(index);
+            if(result.getID() == index){
+                cout << endl << "Probe found: " << endl;
+                result.displayProbe();
+            } else {
+                break;
+            }
             break;
         case 8:
             galaxy.writeGalaxyToFile();
@@ -152,6 +166,11 @@ int main(){
             cin >> source;
             cout << "Enter the index of the second probe: ";
             cin >> destin;
+            
+            if (source < 0 || source > 9 || destin < 0 || destin > 9 ) {
+                cout << "Index Out of Range." << endl;
+                break;
+            }
 
             galaxy.swapProbeData(source, destin);
 
@@ -178,6 +197,9 @@ int main(){
             cout << "Enter the new value: ";
             cin >> new_value;
             galaxy.insertProbeData(index, n, nn, new_value);
+            cout << "Data inserted succesfully." << endl << endl;
+            cout << "Updated Probe: " << endl;
+            galaxy.displayProbe(index);
             break;
         case 11:
             cout << "Enter the index of the source probe: ";
@@ -185,6 +207,9 @@ int main(){
             cout << "Enter the index of the destination probe: ";
             cin >> destin;
             galaxy.copyProbe(source, destin);
+            cout << "Probe copied succesfully." << endl << endl;
+            cout << "Destination Probe (index " << destin << "):" << endl;
+            galaxy.displayProbe(destin);
             break;
         case 12:
             cout << "Enter the index of the probe to display: ";
@@ -215,6 +240,5 @@ int main(){
             break;
     }
 }
-
     
 }

@@ -96,12 +96,12 @@ void Probe::operator-(Probe& other){
     setPosition(0, p0);
     setPosition(1, p1);
     calculateArea();
-    cout << endl <<  "Probe data swapped sucessfully." << endl << endl;
+    //cout << endl <<  "Probe data swapped sucessfully." << endl << endl;
 }
 
 
 void Probe::calculateArea(){
-    area = 2 * (dimensions[0] * dimensions[1]);
+    area = 2 * (dimensions[0] + dimensions[1]);
 }
 
 void Probe::displayProbe() const{
@@ -111,4 +111,5 @@ void Probe::displayProbe() const{
     cout << "Area: " << area << endl;
     cout << "Positions: [" << positions[0] << ", " << positions[1] << "]" << endl;
 }
+
 
