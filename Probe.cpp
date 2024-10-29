@@ -6,16 +6,20 @@
 
 using namespace std;
 
+// Default constructor
 Probe::Probe(){}
 
+// Get the name of the Probe
 string Probe::getName() const {
     return name;
 }
 
+// Get the ID of the Probe
 int Probe::getID() const {
     return ID;
 }
 
+// Get a specific dimension of the Probe
 int Probe::getDimension(int index) const {
     if (index == 0 || index == 1) {
         return dimensions[index];
@@ -23,10 +27,12 @@ int Probe::getDimension(int index) const {
     return -1;
 }
 
+// Get the area of the Probe
 double Probe::getArea() const {
     return area;
 }
 
+// Get a specific position of the Probe
 int Probe::getPosition(int index) const {
     if (index == 0 || index == 1) {
         return positions[index];
@@ -34,14 +40,17 @@ int Probe::getPosition(int index) const {
     return -1;
 }
 
+// Set the name of the Probe
 void Probe::setName(const string& newName) {
     name = newName;
 }
 
+// Set the ID of the Probe
 void Probe::setID(int newID) {
     ID = newID;
 }
 
+// Set a specific dimension of the Probe
 void Probe::setDimension(int index, int value) {
     if (index == 0 || index == 1) {
         dimensions[index] = value;
@@ -51,6 +60,7 @@ void Probe::setDimension(int index, int value) {
     }
 }
 
+// Set a specific position of the Probe
 void Probe::setPosition(int index, int value) {
     if (index == 0 || index == 1) {
         positions[index] = value;
@@ -61,7 +71,7 @@ void Probe::setPosition(int index, int value) {
 
 
 
-
+// Overload the << operator for copying Probe data
 void Probe::operator<<(Probe& other){
     name = other.name;
     ID = other.ID;
@@ -72,6 +82,7 @@ void Probe::operator<<(Probe& other){
     positions[1] = other.positions[1];
 }
 
+// Overload the - operator for swapping Probe data
 void Probe::operator-(Probe& other){
     // swap
     string name_temp;
@@ -99,11 +110,12 @@ void Probe::operator-(Probe& other){
     //cout << endl <<  "Probe data swapped sucessfully." << endl << endl;
 }
 
-
+// Calculate the area of the Probe based on its dimensions
 void Probe::calculateArea(){
     area = 2 * (dimensions[0] + dimensions[1]);
 }
 
+// Display the details of the Probe
 void Probe::displayProbe() const{
     cout << "Name: " << name << endl;
     cout << "ID: " << ID << endl;
